@@ -44,8 +44,10 @@ router.post('/', (req, res) => {
 });
 
 // PUT (UPDATE) user/users/id
+// Passes in req.body instead to only update what's passed through
 router.put('/:id', (req, res) => {
     User.update(req.body, {
+        individualHooks: true,
         where: {
             id: req.params.id
         }
