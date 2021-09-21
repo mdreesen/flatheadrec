@@ -38,5 +38,5 @@ sequelize.sync({ force: false }).then(() => {
         res.sendFile(path.join(__dirname, '../client/build/index.html'));
       });
       
-    app.listen(PORT, () => console.log(`Now Listening on PORT ${PORT}`));
+    app.listen(PORT, () => console.log(`Backend Listening on PORT ${PORT}`));
 });

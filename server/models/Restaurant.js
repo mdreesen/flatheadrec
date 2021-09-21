@@ -24,13 +24,17 @@ Restaurant.init(
         },
         place: {
             type: DataTypes.STRING,
-            allowNull: false,
+            allowNull: true,
+        },
+        menu: {
+            type: DataTypes.STRING,
+            allowNull: true,
         }
     },
     {
         // Pass import
         sequelize,
-        // Don't automatically create "createdAt/updatedAt" filds
+        // Don't automatically create "createdAt/updatedAt" fields
         timestamps: false,
         // Don't pluralize names of tables
         freezeTableName: true,
