@@ -1,5 +1,4 @@
 const router = require('express').Router();
-const { userInfo } = require('os');
 const { User } = require('../../models');
 
 // GET /api/users
