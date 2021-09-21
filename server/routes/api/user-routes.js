@@ -1,4 +1,5 @@
 const router = require('express').Router();
+const { userInfo } = require('os');
 const { User } = require('../../models');
 
 // GET /api/users
@@ -42,6 +43,32 @@ router.post('/', (req, res) => {
         res.status(500).json(err);
     })
 });
+
+// POST Login Route
+// Expects email and password
+router.post('/login', (req, res) => {
+    User.findOne({
+        where: {
+            email: req.body.email
+        }
+    })
+    .then(dbUserData => {
+        if (!dbUserData) {
+            res.status(400).json({ message: 'No user with that email' });
+            return
+        }
+        const validPassword = dbUserData.checkPassword(req.body.password);
+        if (!validPassword) {
+            res.status(400).json({ message: 'Wrong Password' });
+            return
+        }
+        res.json({ user: dbUserData, message: 'You are now logged in' });
+    })
+    .catch(err => {
+        console.log(err);
+        res.status(500).json(err);
+    })
+})
 
 // PUT (UPDATE) user/users/id
 // Passes in req.body instead to only update what's passed through
