@@ -2,10 +2,10 @@ const { Model, DataTypes } = require('sequelize');
 const sequelize = require('../config/connection');
 
 // Create User Model
-class Restaurant extends Model { }
+class Outdoor extends Model { }
 
 // Define table columns and configuration
-Restaurant.init(
+Outdoor.init(
     {
         id: {
             // use sequelize dataTypes
@@ -45,4 +45,4 @@ Restaurant.init(
     }
 );
 
-module.exports = Restaurant;
+module.exports = Outdoor;

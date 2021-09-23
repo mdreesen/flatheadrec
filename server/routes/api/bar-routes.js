@@ -1,9 +1,9 @@
 const router = require('express').Router();
-const { Restaurant } = require('../../models');
+const { Bar } = require('../../models');
 
-// GET /api/restaurants
+// GET /api/Bars
 router.get('/', (req, res) => {
-    Restaurant.findAll({
+    Bar.findAll({
         attributes: { exclude: ['password'] }
     })
     .then(dbResData => res.json(dbResData))
@@ -13,9 +13,9 @@ router.get('/', (req, res) => {
     })
 });
 
-// POST user/restaurants
+// POST user/Bars
 router.post('/', (req, res) => {
-    Restaurant.create({
+    Bar.create({
         name: req.body.name,
         location: req.body.location,
         menu: req.body.menu
@@ -27,17 +27,17 @@ router.post('/', (req, res) => {
     })
 });
 
-// PUT (UPDATE) restaurants
+// PUT (UPDATE) Bars
 // Passes in req.body instead to only update what's passed through
 router.put('/:id', (req, res) => {
-    Restaurant.update(req.body, {
+    Bar.update(req.body, {
         individualHooks: true,
         where: {
             id: req.params.id
         }
     })
     .then(dbResData => {
-        return !dbResData[0] ? res.status(404).json({ message: 'No restaurant found' }) : res.json(dbResData);
+        return !dbResData[0] ? res.status(404).json({ message: 'No Bar found' }) : res.json(dbResData);
     })
     .catch(err => {
         console.log(err)
@@ -45,9 +45,9 @@ router.put('/:id', (req, res) => {
     })
 });
 
-// DELETE user/restaurants
+// DELETE user/Bars
 router.delete('/:id', (req, res) => {
-    Restaurant.destroy({
+    Bar.destroy({
         where: {
             id: req.params.id
         }
