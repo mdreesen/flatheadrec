@@ -41,7 +41,7 @@ Family.init(
         // Use underscores instead of camel-case
         underscored: true,
         // Model names stay lowercase
-        modelName: 'Restaurant'
+        modelName: 'Family'
     }
 );
 
