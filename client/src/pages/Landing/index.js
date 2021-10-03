@@ -1,64 +1,42 @@
-import React, { useState } from 'react';
-import './landing.css';
+import React from 'react';
 
-const Landing = () => {
+// import components
+import LoginModal from '../../components/LoginModal';
+import SignupModal from '../../components/SignupModal';
+import Footer from '../../components/Footer';
 
-    const [user, setUser] = useState({email: "", password: ""})
-
-    async function userLogin(e) {
-        e.preventDefault();
-
-        const login = '/api/users/login'
-
-        try {
-            const response = await fetch(login,{
-                method: 'post',
-                body: JSON.stringify({
-                    email,
-                    password
-                }),
-                headers: { 'Content-Type': 'application/json' },
-            })
-
-            if (response.ok && session) {
-                console.log('success');
-                document.location.replace('/home')
-            } else {
-                console.log(response.statusCode)
-            }
-        } catch (err) {
-            console.error(err.message);
-        }
-    }
-
-    const submitHandler = e => {
-        e.preventDefault();
-
-    }
-
+function Landing() {
     return (
-        <section>
-            <div>
-            <form className="input_container" onSubmit={submitHandler}>
-                    <div className="email_container">
-                        <label>email </label>
-                        <input id="email" type="text" name="email"></input>
-                    </div>
-                    <div className="password_container">
-                        <label>password </label>
-                        <input id="password" type="text" name="password"></input>
-                    </div>
-                    <div>
-                        <button className="btn" type="submit">login</button>
-                    </div>
-                </form>
-
-                <img className="hero" alt="hero img" src="./flatheadPic.webp"></img>
-            </div>
-        </section>
+        <div>
+            <section className="landingHero">
+                    <span><h1 className="title">WREN</h1></span>
+                <div className="loginSignupBtn">
+                    <LoginModal/>
+                    <SignupModal/>
+                </div>
+            </section>
+            <section className="aboutSection">
+                <h2>About</h2>
+                <p>
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, 
+                    sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
+                    Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut 
+                    aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in 
+                    voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint 
+                    occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit 
+                    anim id est laborum.
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, 
+                    sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
+                    Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut 
+                    aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in 
+                    voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint 
+                    occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit 
+                    anim id est laborum.
+                </p>
+            </section>
+            <Footer />
+        </div>
     );
-}
+};
 
-<style>
-</style>
 export default Landing;

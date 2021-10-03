@@ -1,19 +1,15 @@
-// import sequelize constructor from library
-const Sequelize = require('sequelize')
+// NOTES
+// Connects to Mongoose and MongoDB here
+const mongoose = require('mongoose');
 
-require('dotenv').config();
+mongoose.connect(
+  process.env.MONGODB_URI || 'mongodb://localhost/flatheadrec', 
+  {
+    useNewUrlParser: true, 
+    useUnifiedTopology: true,
+    useCreateIndex: true,
+    useFindAndModify: false
+  }
+);
 
-// create connection to the wren_db, pass in MySql information
-let sequelize;
-
-if (process.env.JAWSDB_URL) {
-  sequelize = new Sequelize(process.env.JAWSDB_URL);
-} else {
-  sequelize = new Sequelize(process.env.DB_NAME, process.env.DB_USER, process.env.DB_PW, {
-    host: 'localhost',
-    dialect: 'mysql',
-    port: 3306
-  });
-}
-
-module.exports = sequelize;
+module.exports = mongoose.connection;

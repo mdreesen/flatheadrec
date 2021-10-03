@@ -1,7 +1,4 @@
 const User = require('./User');
-const Bar = require('./Bar');
-const Family = require('./Family');
-const Outdoor = require('./Outdoor');
-const Restaurant = require('./Restaurant');
+const Place = require('./Place');
 
-module.exports = { User, Bar, Family, Outdoor, Restaurant };
+module.exports = { User, Place };

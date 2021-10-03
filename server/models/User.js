@@ -1,71 +1,51 @@
-const { Model, DataTypes } = require('sequelize');
-const sequelize = require('../config/connection');
+const { Schema, model } = require('mongoose');
 const bcrypt = require('bcrypt');
-const { beforeCreate, update } = require('./Restaurant');
 
-// Create User Model
-class User extends Model {
-    // Set up method to run on instance data (per user) to check password
-    checkPassword(loginPw) {
-        return bcrypt.compareSync(loginPw, this.password);
-    }
- }
+// The User Schema uses regex to validate the email
 
-// Define table columns and configuration
-User.init(
-    {
-        id: {
-            // use sequelize dataTypes
-            type: DataTypes.INTEGER,
-            // NOT NULL
-            allowNull: false,
-            // instruct this is primary key,
-            primaryKey: true,
-            // turn on auto increment
-            autoIncrement: true
-        },
-        email: {
-            type: DataTypes.STRING,
-            allowNull: false,
-            unique: true,
-            validate: {
-                isEmail: true
-            }
-        },
-        password: {
-            type: DataTypes.STRING,
-            allowNull: false,
-            validate: {
-                // this means the password must be at least 4 characters
-                len: [4]
-            }
-        }
+const userSchema = new Schema(
+  {
+    username: {
+      type: String,
+      required: true,
+      unique: true,
+      trim: true
     },
-    {
-        hooks: {
-            // Set up beforeCreate lifecycle "hook" functionality
-            async beforeCreate(newUserData) {
-                newUserData.password = await bcrypt.hash(newUserData.password, 10);
-                return newUserData;
-            },
-
-            // Setup up beforeUpdate lifecycle "hook" functionality
-            async beforeUpdate(updatedUserData) {
-                updatedUserData.password = await bcrypt.hash(updatedUserData.password, 10);
-                return updatedUserData;
-            }
-        },
-        // Pass import
-        sequelize,
-        // Don't automatically create "createdAt/updatedAt" filds
-        timestamps: false,
-        // Don't pluralize names of tables
-        freezeTableName: true,
-        // Use underscores instead of camel-case
-        underscored: true,
-        // Model names stay lowercase
-        modelName: 'user'
+    email: {
+      type: String,
+      required: true,
+      unique: true,
+      match: [/.+@.+\..+/, 'Must match an email address!']
+    },
+    password: {
+      type: String,
+      required: true,
+      minlength: 5
+    },
+  },
+  {
+    toJSON: {
+      virtuals: true
     }
+  }
 );
+
+// set up pre-save middleware to create password
+// This checks to see if the password is new or has been modified
+userSchema.pre('save', async function(next) {
+  if (this.isNew || this.isModified('password')) {
+    const saltRounds = 10;
+    this.password = await bcrypt.hash(this.password, saltRounds);
+  }
+
+  next();
+});
+
+// compare the incoming password with the hashed password
+userSchema.methods.isCorrectPassword = async function(password) {
+  return bcrypt.compare(password, this.password);
+};
+
+const User = model('User', userSchema);
 
 module.exports = User;

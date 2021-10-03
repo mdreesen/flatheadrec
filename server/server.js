@@ -1,42 +1,56 @@
+// NOTES
+// This file imports the Mongoose and MongoDB connection (from /config/connection.js)
 const express = require('express');
-const routes = require('./routes');
-const sequelize = require('./config/connection');
+const { ApolloServer } = require('apollo-server-express');
 const path = require('path');
-const session = require('express-session');
 
 
-const app = express();
+// typeDefs and resolvers
+const { typeDefs, resolvers } = require('./schemas');
+
+const db = require('./config/connection');
+
 const PORT = process.env.PORT || 3001;
+const app = express();
 
+// setting up Auth middleware
+const { authMiddleware } = require('./utils/auth');
+
+// create new Apollo Server and pass in schema data
+// "context" every request performs authentication check
+// updated request object will be passed to the resolvers as the context
+const server = new ApolloServer({
+    typeDefs,
+    resolvers,
+    context: authMiddleware
+})
+
+// integrate Apollo Server with express app as middleware
+server.applyMiddleware({ app });
+
+app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
-app.use(express.urlencoded({ extended: true }));
 
-const SequelizeStore = require('connect-session-sequelize')(session.Store);
-const sess = {
-  secret: 'Super secret secret',
-  cookie: {},
-  resave: false,
-  saveUninitialized: true,
-  store: new SequelizeStore({
-    db: sequelize
-  })
-};
+/////////////////////////////////////////////////////////////////////////////
+// -=- This only comes into effect in PRODUCTION -=- //
+// serve up static assets from the build folder
+if (process.env.NODE_ENV === 'production') {
+  app.use(express.static(path.join(__dirname, '../client/build')));
+}
 
-app.use(session(sess));
+app.get('*', (req, res) => {
+  res.sendFile(path.join(__dirname, '../client/build/index.html'));
+})
+/////////////////////////////////////////////////////////////////////////////
 
-// turn on routes
-app.use(routes);
+// Listen for the connection here
+// Upon a successful connection, we start the server
+db.once('open', () => {
+  app.listen(PORT, () => {
+    // logging express server PORT
+    console.log(`Express server on port ${PORT}`);
 
-// turn on connection to db and server
-// force: true drops the db
-sequelize.sync({ force: false }).then(() => {
-    if (process.env.NODE_ENV === 'production') {
-        app.use(express.static(path.join(__dirname, '../client/build')));
-      }
-      
-      app.get('*', (req, res) => {
-        res.sendFile(path.join(__dirname, '../client/build/index.html'));
-      });
-      
-    app.listen(PORT, () => console.log(`Backend Listening on PORT ${PORT}`));
+    // logging GraphQL server PORT
+    console.log(`GraphQL server on http://localhost:${PORT}${server.graphqlPath}`);
+  });
 });
