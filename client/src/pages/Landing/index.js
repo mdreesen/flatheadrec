@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import './landingpage.css';
 
 // import components
@@ -17,12 +18,12 @@ function Landing() {
                     <div className="login_signup_forms">
                         <h2>Login</h2>
                         <LoginForm />
+                        <Link to="/admin-login">Admin</Link>
                     </div>
                     <div className="login_signup_forms">
                         <h2>Sign Up</h2>
                         <SignupModal />
                     </div>
-
                 </div>
             </section>
             <section className="aboutSection">

@@ -10,6 +10,9 @@ import UserSettings from './pages/UserSettings';
 import Home from './pages/Home';
 import NotAPage from './pages/NotAPage';
 
+// Admin Page
+import AdminLogin from './pages/AdminLogin'
+
 // making the connection to the graphql backend server
 // "uri" = Uniform Resource Identifier
 // this function also sets up looking at the user when logged in
@@ -34,6 +37,7 @@ function App() {
         <div className="App">
           <Switch>
             <Route exact path="/" component={Landing}/>
+            <Route exact path="/admin-login" component={AdminLogin} />
             <Route exact path="/settings" component={UserSettings} />
             <Route exact path="/home" component={Home}/>
 
