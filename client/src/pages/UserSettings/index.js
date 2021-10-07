@@ -1,7 +1,7 @@
 import React from 'react';
 // import { Link } from 'react-router-dom';
 import { useQuery } from '@apollo/react-hooks';
-import { QUERY_BIRTHWORKERS } from '../../utils/queries';
+import { QUERY_ME } from '../../utils/queries';
 import Auth from '../../utils/auth';
 
 // import MidwifeCard from '../../components/MidwifeCard';
@@ -10,7 +10,7 @@ import NavbarUser from '../../components/NavbarUser';
 function UserSettings() {
 
     // getting the data from the query
-    const { loading, data } = useQuery(QUERY_BIRTHWORKERS);
+    const { loading, data } = useQuery(QUERY_ME);
     // console.log({ data })
 
     // if no birthworkers then bring back an empty array

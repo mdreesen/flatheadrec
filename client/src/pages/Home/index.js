@@ -17,12 +17,7 @@ function Home(props) {
                 {userData && Auth.loggedIn() ? (
                     <>
                     <div className="home-cards">
-                        {/* <Mood />
-                        <AssociatedBWList 
-                            username={userData.me.username}
-                            birthworkerCount={userData.me.birthworkerCount}
-                            associateWithWorker={userData.me.associateWithWorker}
-                        /> */}
+
                     </div>
                     </>
                 ) : (

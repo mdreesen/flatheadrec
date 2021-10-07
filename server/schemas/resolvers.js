@@ -33,19 +33,6 @@ const resolvers = {
       return User.findOne({ email })
         .select('-__v -password')
     },
-
-    // Getting birthworker by email
-    // place: async (parent, { email }) => {
-    //   return Place.findOne({ email })
-    //     .select('-__v -password')
-    //     // .populate('place')
-    // },
-
-    // places: async () => {
-    //   return Place.find()
-    //     .select('-__v -password')
-    //     // .populate('place')
-    // },
   },
 
   Mutation: {
@@ -68,12 +55,6 @@ const resolvers = {
       const token = signToken(user);
       return { token, user };
     },
-
-    // addPlace: async (parent, args) => {
-    //   const place = await Place.create(args);
-    //   // const token = signToken(birthworker);
-    //   return { place };
-    // }
   }
 };
 

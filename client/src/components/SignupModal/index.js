@@ -13,7 +13,7 @@ const SignupModal = () => {
     const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);
 
-    const [formState, setFormState] = useState({ username: '', firstname: '', lastname: '', email: '', password: '' });
+    const [formState, setFormState] = useState({ username: '', email: '', password: '' });
     const [addUser, { error }] = useMutation(ADD_USER);
 
     const handleFormSubmit = async event => {
@@ -39,7 +39,6 @@ const SignupModal = () => {
         // console.log(setFormState({ ...formState, [name]: value }))
 
         setFormState({
-
             ...formState,
             [name]: value
         });
@@ -70,16 +69,6 @@ const SignupModal = () => {
                         </div>
                         <br />
                         <div>
-                            <label id="signupFirstNameLabel" htmlFor="signup-firstName">First Name</label>
-                            <div><input value={formState.firstname} onChange={handleChange} id="signup-firstname-input" name="firstname" placeholder="Required" /></div>
-                        </div>
-                        <br />
-                        <div>
-                            <label id="signupLastNameLabel" htmlFor="signup-lastName">Last Name</label>
-                            <div><input value={formState.lastname} onChange={handleChange} id="signup-lastname-input" name="lastname" placeholder="Required" /></div>
-                        </div>
-                        <br />
-                        <div>
                             <label id="signupEmailLabel" htmlFor="signup-email">Email</label>
                             <div><input value={formState.email} onChange={handleChange} id="signup-email-input" name="email" placeholder="Required" /></div>
                         </div>
@@ -88,14 +77,10 @@ const SignupModal = () => {
                             <label id="signupPasswordLabel" htmlFor="signup-password">Password (minimum of 4 characters)</label>
                             <div><input value={formState.password} onChange={handleChange} id="signup-password-input" type="password" name="password" placeholder="Required" autoComplete="on" /></div>
                         </div>
-                        <br />
-                        <div>
-                            <label id="signupConfirmPasswordLabel" htmlFor="signup-confirm-password">Confirm Password (minimum of 4 characters)</label>
-                            <div><input id="signup-confirm-password-input" type="password" name="signup-confirm-password" placeholder="Required" autoComplete="on" /></div>
-                        </div>
                     </form>
                 </Modal.Body>
                 <Modal.Footer>
+                {error && <div>Incorrect Login</div>}
                     <Button variant="secondary" onClick={handleClose}>
                         Close
             </Button>

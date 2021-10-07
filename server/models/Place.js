@@ -16,7 +16,18 @@ const locationSchema = new Schema(
       type: String,
       required: true
     },
-
+    type: {
+      type: String,
+      required: true
+    },
+    category: {
+      type: String,
+      required: false
+    },
+    website: {
+      type: String,
+      required: true
+    },
   },
   {
     toJSON: {

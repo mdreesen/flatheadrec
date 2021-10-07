@@ -15,6 +15,9 @@ type Query {
 
     users: [User]
     user(email: String!): User
+
+    place: [Place]
+    places(name: String!): Place
 }
 
 type Auth {
@@ -36,10 +39,13 @@ type Place {
     name: String
     createdAt: String
     location: String
+    type: String
+    category: String
+    website: String
   }
 
 type Mutation {
-    addUser(username: String!, firstname: String!, lastname: String!, email: String!, password: String!): Auth
+    addUser(username: String!, email: String!, password: String!): Auth
     userLogin(email: String!, password: String!): Auth
 }
 `;

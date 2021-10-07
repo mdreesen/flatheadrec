@@ -1,38 +1,31 @@
 import React from 'react';
+import './landingpage.css';
 
 // import components
-import LoginModal from '../../components/LoginModal';
+import LoginForm from '../../components/LoginForm';
 import SignupModal from '../../components/SignupModal';
 // import Footer from '../../components/Footer';
 
 function Landing() {
     return (
         <div>
+            {/* <img src="./flatheadPic.webp"></img> */}
             <section className="landingHero">
-                    <span><h1 className="title">WREN</h1></span>
-                <div className="loginSignupBtn">
-                    <LoginModal/>
-                    <SignupModal/>
+                <span><h1 className="title">Flathead Adventure</h1></span>
+                <p>Lets adventure around the Flathead Valley.</p>
+                <div className="login_signup">
+                    <div className="login_signup_forms">
+                        <h2>Login</h2>
+                        <LoginForm />
+                    </div>
+                    <div className="login_signup_forms">
+                        <h2>Sign Up</h2>
+                        <SignupModal />
+                    </div>
+
                 </div>
             </section>
             <section className="aboutSection">
-                <h2>About</h2>
-                <p>
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, 
-                    sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
-                    Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut 
-                    aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in 
-                    voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint 
-                    occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit 
-                    anim id est laborum.
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, 
-                    sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
-                    Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut 
-                    aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in 
-                    voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint 
-                    occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit 
-                    anim id est laborum.
-                </p>
             </section>
         </div>
     );
