@@ -1,4 +1,6 @@
 import React, { useState } from 'react';
+import Button from 'react-bootstrap/Button';
+import Modal from 'react-bootstrap/Modal';
 import Auth from '../../utils/auth';
 import { useMutation } from '@apollo/react-hooks';
 import { ADD_USER } from '../../utils/mutations';
@@ -6,12 +8,17 @@ import { ADD_USER } from '../../utils/mutations';
 // import conditionals
 
 const SignupModal = () => {
+
+    const [show, setShow] = useState(false);
+    const handleClose = () => setShow(false);
+    const handleShow = () => setShow(true);
+
     const [formState, setFormState] = useState({ username: '', firstname: '', lastname: '', email: '', password: '' });
     const [addUser, { error }] = useMutation(ADD_USER);
 
     const handleFormSubmit = async event => {
         event.preventDefault();
-    
+
         // if the user is created successfully, then they will be redirected to the "/home" page
         try {
             const { data } = await addUser({
@@ -19,7 +26,7 @@ const SignupModal = () => {
             });
             Auth.userLogin(data.addUser.token)
             console.log(data);
-        } catch(e) {
+        } catch (e) {
             console.log(e)
         }
     };
@@ -27,37 +34,35 @@ const SignupModal = () => {
     // update state based on form input changes
     const handleChange = event => {
         const { name, value } = event.target;
-    
+
         console.log({ name, value })
         // console.log(setFormState({ ...formState, [name]: value }))
 
         setFormState({
 
-          ...formState,
-          [name]: value
+            ...formState,
+            [name]: value
         });
-      };
+    };
 
 
-    
-    return(
-        <div>
-            {/* Button trigger modal */}
-            <button type="button" className="btn" data-toggle="modal" data-target="#signUpModal">
-                Signup
-            </button>
 
-            {/* Sign-up Modal */}
-            <div className="modal fade" id="signUpModal" tabIndex={-1} role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-            <div className="modal-dialog" role="document">
-                <div className="modal-content">
-                <div className="modal-header">
-                    <button type="button" className="close" data-dismiss="modal" aria-label="Close">
-                    <span id="signupCloseBtn" aria-hidden="true">×</span>
-                    </button>
-                </div>
-                {/* Modal Body (username, email, password, and button) */}
-                <div className="modal-body" type="text">
+    return (
+        <>
+            <Button variant="primary" onClick={handleShow}>
+                Sign Up
+        </Button>
+
+            <Modal
+                show={show}
+                onHide={handleClose}
+                backdrop="static"
+                keyboard={false}
+            >
+                <Modal.Header closeButton>
+                    <Modal.Title>Sign Up</Modal.Title>
+                </Modal.Header>
+                <Modal.Body>
                     <form>
                         <div>
                             <label id="signupUsernameLabel" htmlFor="signup-username">Username</label>
@@ -81,23 +86,24 @@ const SignupModal = () => {
                         <br />
                         <div>
                             <label id="signupPasswordLabel" htmlFor="signup-password">Password (minimum of 4 characters)</label>
-                            <div><input value={formState.password} onChange={handleChange} id="signup-password-input" type="password" name="password" placeholder="Required" autoComplete="on"/></div>
+                            <div><input value={formState.password} onChange={handleChange} id="signup-password-input" type="password" name="password" placeholder="Required" autoComplete="on" /></div>
                         </div>
                         <br />
                         <div>
                             <label id="signupConfirmPasswordLabel" htmlFor="signup-confirm-password">Confirm Password (minimum of 4 characters)</label>
-                            <div><input id="signup-confirm-password-input" type="password" name="signup-confirm-password" placeholder="Required" autoComplete="on"/></div>
+                            <div><input id="signup-confirm-password-input" type="password" name="signup-confirm-password" placeholder="Required" autoComplete="on" /></div>
                         </div>
                     </form>
-                </div>
-                <div className="modal-footer">
-                    <button type="click" id="signupModalBtn" className="btn btn-primary" onClick={handleFormSubmit} >Signup</button>
-                </div>
-                {error && <div>Please Try Again</div>}
-                </div>
-            </div>
-            </div>
-        </div>
+                </Modal.Body>
+                <Modal.Footer>
+                    <Button variant="secondary" onClick={handleClose}>
+                        Close
+            </Button>
+                    <Button onClick={handleFormSubmit} variant="primary">Sign Up</Button>
+                </Modal.Footer>
+            </Modal>
+        </>
+
     );
 };
 

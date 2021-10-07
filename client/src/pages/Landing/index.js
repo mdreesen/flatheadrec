@@ -3,7 +3,7 @@ import React from 'react';
 // import components
 import LoginModal from '../../components/LoginModal';
 import SignupModal from '../../components/SignupModal';
-import Footer from '../../components/Footer';
+// import Footer from '../../components/Footer';
 
 function Landing() {
     return (
@@ -34,7 +34,6 @@ function Landing() {
                     anim id est laborum.
                 </p>
             </section>
-            <Footer />
         </div>
     );
 };
