@@ -11,7 +11,9 @@ import Home from './pages/Home';
 import NotAPage from './pages/NotAPage';
 
 // Admin Page
-import AdminLogin from './pages/AdminLogin'
+import AdminLogin from './pages/AdminLogin';
+import AdminSignup from './pages/AdminSignup';
+
 
 // making the connection to the graphql backend server
 // "uri" = Uniform Resource Identifier
@@ -38,6 +40,7 @@ function App() {
           <Switch>
             <Route exact path="/" component={Landing}/>
             <Route exact path="/admin-login" component={AdminLogin} />
+            <Route exact path="/admin265317993996signup" component={AdminSignup} />
             <Route exact path="/settings" component={UserSettings} />
             <Route exact path="/home" component={Home}/>
 
