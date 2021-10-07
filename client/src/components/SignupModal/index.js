@@ -25,7 +25,6 @@ const SignupModal = () => {
                 variables: { ...formState }
             });
             Auth.userLogin(data.addUser.token)
-            console.log(data);
         } catch (e) {
             console.log(e)
         }
@@ -34,9 +33,6 @@ const SignupModal = () => {
     // update state based on form input changes
     const handleChange = event => {
         const { name, value } = event.target;
-
-        console.log({ name, value })
-        // console.log(setFormState({ ...formState, [name]: value }))
 
         setFormState({
             ...formState,

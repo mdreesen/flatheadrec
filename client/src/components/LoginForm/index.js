@@ -13,8 +13,6 @@ const LoginForm = () => {
   const handleChange = event => {
     const { name, value } = event.target;
 
-    console.log({ name, value })
-
     setFormState({
       ...formState,
       [name]: value
@@ -29,7 +27,6 @@ const LoginForm = () => {
       const { data } = await userLogin({
         variables: { ...formState }
       });
-      console.log(data)
       Auth.userLogin(data.userLogin.token);
     } catch (e) {
       console.error(e);

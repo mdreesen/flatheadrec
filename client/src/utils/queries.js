@@ -7,13 +7,6 @@ export const QUERY_USER = gql`
         user(username: $username) {
         _id
         username
-        associateWithWorker {
-            _id
-            username
-            firstname
-            lastname
-            email
-        }
     }
 }
 `;
@@ -36,55 +29,7 @@ export const QUERY_ME = gql `
     me {
       _id
       username
-      firstname
-      lastname
-      email
-      associateWithWorker {
-        _id
-        username
-        firstname
-        lastname
-        email
-      }
-    }
-  }
-`;
-
-// querying the logged in user
-export const QUERY_ME_BASIC = gql `
-{
-    me {
-      _id
-      username
-      firstname
-      lastname
-      email
-      birthworkerCount
-      associateWithWorker {
-        _id
-        username
-        firstname
-        lastname
-        email
-    }
-    }
-  }
-`;
-
-export const QUERY_WORKER_BASIC = gql `
-{
-  viewBirthworker {
-    _id
-    username
-    firstname
-    lastname
-    email
-    associateWithUser {
-      _id
-      username
-      firstname
       email
     }
   }
-}
 `;

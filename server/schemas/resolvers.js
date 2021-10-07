@@ -1,4 +1,4 @@
-const { User, Place } = require('../models');
+const { User, Place, Admin } = require('../models');
 const { AuthenticationError } = require('apollo-server-express');
 const { signToken } = require('../utils/auth');
 
@@ -33,6 +33,14 @@ const resolvers = {
       return User.findOne({ email })
         .select('-__v -password')
     },
+
+    place: async (parent, { name }) => {
+      return Place.findOne({ name })
+    },
+
+    places: async (parent, { name }) => {
+      return Place.find()
+    }
   },
 
   Mutation: {
@@ -54,6 +62,26 @@ const resolvers = {
       }
       const token = signToken(user);
       return { token, user };
+    },
+
+    // -=- Admin Mutations -=-
+    addAdmin: async (parent, args) => {
+      const admin = await Admin.create(args);
+      const token = signToken(admin);
+      return { token, admin };
+    },
+
+    adminLogin: async (parent, { email, password }) => {
+      const admin = await Admin.findOne({ email });
+      if (!admin) {
+        throw new AuthenticationError('Incorrect Credentials');
+      }
+      const correctPw = await admin.isCorrectPassword(password);
+      if (!correctPw) {
+        throw new AuthenticationError('Incorrect credentials');
+      }
+      const token = signToken(admin);
+      return { token, admin };
     },
   }
 };

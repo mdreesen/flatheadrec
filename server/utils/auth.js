@@ -28,13 +28,12 @@ module.exports = {
       // if(token.length < 500) {
       const { data } = jwt.verify(token, secret, { maxAge: expiration });
       req.user = data
+      req.admin = data
       // console.log(data)
     } catch { 
       console.log('Invalid token');
     }
-
     console.log(req.user);
-    console.log(req.birthworker)
     return req;
   },
 

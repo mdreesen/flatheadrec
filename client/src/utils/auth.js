@@ -36,12 +36,24 @@ class AuthService {
         return localStorage.getItem('id_token');
     }
 
+    // User Token
     // set token to local storage and reload to homepage
     userLogin(idToken) {
         // saves user token to local storage
         if (idToken) {
             localStorage.setItem('id_token', idToken);
             window.location.assign('/home');
+
+        } else {
+            window.location.assign('/');
+        }
+    }
+
+    // Admin Token
+    adminLogin(idToken) {
+        if (idToken) {
+            localStorage.setItem('id_token', idToken);
+            window.location.assign('/admin');
 
         } else {
             window.location.assign('/');
