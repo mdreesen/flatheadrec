@@ -1,6 +1,5 @@
 import React from 'react';
-
-// import components
+import Navbar from '../../components/NavbarUser';
 import Auth from '../../utils/auth';
 import { useQuery } from '@apollo/react-hooks';
 import { QUERY_ME } from '../../utils/queries';
@@ -14,8 +13,9 @@ function Home(props) {
             <div>
                 {Auth.loggedIn() ? (
                     <>
+                    <Navbar />
                     <div className="home-cards">
-
+                        <h1>Welcome Admin</h1>
                     </div>
                     </>
                 ) : (

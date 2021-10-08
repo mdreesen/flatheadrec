@@ -12,27 +12,27 @@ function Navigation() {
         Auth.logout();
     }
 
-    return(
+    return (
         <Navbar className="nav" collapseOnSelect expand="lg" bg="dark" variant="dark">
-        <Navbar.Toggle aria-controls="responsive-navbar-nav" />
-        <Navbar.Collapse id="responsive-navbar-nav">
-        {Auth.loggedIn() ? (
-            <Nav className="me-auto link_bundle">
-                <Nav.Link href="/home">Home</Nav.Link>
-                <Nav.Link href="#">Link</Nav.Link>
-                <Nav.Link href="#">Link</Nav.Link>
-                <Nav.Link href="#">Link</Nav.Link>
-                <Nav>
-                    <Nav.Link href="#" onClick={logout}>Logout</Nav.Link>
-                </Nav>
-            </Nav>
-        ) : (
-            <Nav>
-                <Nav.Link href="/">Back</Nav.Link>
-            </Nav>
-        )}
-        </Navbar.Collapse>
-    </Navbar>
+            <Navbar.Toggle aria-controls="responsive-navbar-nav" />
+            <Navbar.Collapse id="responsive-navbar-nav">
+                {Auth.loggedIn() ? (
+                    <Nav className="me-auto link_bundle">
+                        <Nav.Link href="/home">Home</Nav.Link>
+                        <Nav.Link href="#">Link</Nav.Link>
+                        <Nav.Link href="#">Link</Nav.Link>
+                        <Nav.Link href="#">Link</Nav.Link>
+                        <Nav>
+                            <Nav.Link href="#" onClick={logout}>Logout</Nav.Link>
+                        </Nav>
+                    </Nav>
+                ) : (
+                        <Nav>
+                            <Nav.Link href="/">Back</Nav.Link>
+                        </Nav>
+                    )}
+            </Navbar.Collapse>
+        </Navbar>
     );
 }
 

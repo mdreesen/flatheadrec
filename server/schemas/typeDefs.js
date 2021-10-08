@@ -56,6 +56,8 @@ type Mutation {
 
     addAdmin(username: String!, email: String!, password: String!): Auth
     adminLogin(email: String!, password: String!): Auth
+
+    addPlace(name: String, location: String, type: String, category: String, website: String): Place
 }
 `;
 

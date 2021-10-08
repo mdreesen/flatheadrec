@@ -13,6 +13,7 @@ import NotAPage from './pages/NotAPage';
 // Admin Page
 import AdminLogin from './pages/AdminLogin';
 import AdminSignup from './pages/AdminSignup';
+import AdminHome from './pages/AdminHome';
 
 
 // making the connection to the graphql backend server
@@ -39,10 +40,12 @@ function App() {
         <div className="App">
           <Switch>
             <Route exact path="/" component={Landing}/>
-            <Route exact path="/admin-login" component={AdminLogin} />
-            <Route exact path="/admin265317993996signup" component={AdminSignup} />
             <Route exact path="/settings" component={UserSettings} />
             <Route exact path="/home" component={Home}/>
+
+            <Route exact path="/admin-login" component={AdminLogin} />
+            <Route exact path="/admin265317993996signup" component={AdminSignup} />
+            <Route exact path="/admin" component={AdminHome} />
 
             <Route component={NotAPage}/>
           </Switch>
