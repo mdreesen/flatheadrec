@@ -53,3 +53,15 @@ export const LOGIN_ADMIN = gql`
   }
 `;
 
+export const ADD_PLACE = gql`
+  mutation($title: String!, $location: String!, $type: String!, $category: String!, $website: String!) {
+    addPlace(title: $title, location: $location, type: $type, category: $category, website: $website) {
+    _id
+    title
+    location
+    type
+    category
+    website
+    }
+  }
+`;

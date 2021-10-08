@@ -17,7 +17,7 @@ type Query {
     user(email: String!): User
 
     places: [Place]
-    place(name: String!): Place
+    place(name: String): Place
 }
 
 type Auth {
@@ -35,7 +35,7 @@ type User {
 
 type Place {
     _id: ID
-    name: String
+    title: String
     createdAt: String
     location: String
     type: String
@@ -57,7 +57,7 @@ type Mutation {
     addAdmin(username: String!, email: String!, password: String!): Auth
     adminLogin(email: String!, password: String!): Auth
 
-    addPlace(name: String, location: String, type: String, category: String, website: String): Place
+    addPlace(title: String!, location: String!, type: String!, category: String!, website: String!): Place
 }
 `;
 

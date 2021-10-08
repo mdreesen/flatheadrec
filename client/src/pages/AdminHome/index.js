@@ -1,12 +1,13 @@
 import React from 'react';
 import Navbar from '../../components/NavbarUser';
 import Auth from '../../utils/auth';
-import { useQuery } from '@apollo/react-hooks';
-import { QUERY_ME } from '../../utils/queries';
+// import { useQuery } from '@apollo/react-hooks';
+// import { QUERY_ME } from '../../utils/queries';
+import AdminMakePlace from '../../components/AdminMakePlace';
 
 function Home(props) {
-    const { data: userData } = useQuery(QUERY_ME);
-    console.log(userData)
+    // const { data: userData } = useQuery(QUERY_ME);
+    // console.log(userData)
 
     return(
         <div>
@@ -16,6 +17,7 @@ function Home(props) {
                     <Navbar />
                     <div className="home-cards">
                         <h1>Welcome Admin</h1>
+                        <AdminMakePlace />
                     </div>
                     </>
                 ) : (

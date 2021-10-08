@@ -2,7 +2,7 @@ const { Schema, model } = require('mongoose');
 
 const locationSchema = new Schema(
   {
-    name: {
+    title: {
       type: String,
       required: 'Required',
       minlength: 1,

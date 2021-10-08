@@ -83,6 +83,13 @@ const resolvers = {
       const token = signToken(admin);
       return { token, admin };
     },
+
+    addPlace: async(parent, args, context) => {
+      if (context.admin) {
+        return await Place.create({ ...args });
+      }
+      throw new AuthenticationError('You need to be logged in')
+    }
   }
 };
 
