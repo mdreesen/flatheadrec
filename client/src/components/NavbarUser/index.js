@@ -1,8 +1,11 @@
 import React from 'react';
+import Navbar from 'react-bootstrap/Navbar'
+import Nav from 'react-bootstrap/Nav';
+import 'bootstrap/dist/css/bootstrap.min.css';
 import { Link } from 'react-router-dom';
 import Auth from '../../utils/auth';
 
-function Navbar() {
+function Navigation() {
 
     const logout = event => {
         event.preventDefault();
@@ -10,48 +13,27 @@ function Navbar() {
     }
 
     return(
-        <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
-        <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-            <span className="navbar-toggler-icon" />
-        </button>
-        <div className="collapse navbar-collapse navbar-css" id="navbarNav">
+        <Navbar className="nav" collapseOnSelect expand="lg" bg="dark" variant="dark">
+        <Navbar.Toggle aria-controls="responsive-navbar-nav" />
+        <Navbar.Collapse id="responsive-navbar-nav">
         {Auth.loggedIn() ? (
-            <>
-            <ul className="navbar-nav">
-                <li className="nav-item">
-                    <Link to="/home" className="nav-link">
-                        Home
-                    </Link>
-                </li>
-                {/* <li className="nav-item">
-                    <Link to="/user-documents" className="nav-link">
-                        Documents
-                    </Link>
-                </li> */}
-                <li className="nav-item">
-                    <Link to="/settings" className="nav-link">
-                        Settings
-                    </Link>
-                </li>
-                <li className="nav-item">
-                <Link to="/" className="nav-link" onClick={logout}>Logout</Link>
-                </li>
-            </ul>
-            </>
+            <Nav className="me-auto link_bundle">
+                <Nav.Link href="/home">Home</Nav.Link>
+                <Nav.Link href="#">Link</Nav.Link>
+                <Nav.Link href="#">Link</Nav.Link>
+                <Nav.Link href="#">Link</Nav.Link>
+                <Nav>
+                    <Nav.Link href="#" onClick={logout}>Logout</Nav.Link>
+                </Nav>
+            </Nav>
         ) : (
-            <ul className="navbar-nav">
-                <li className="nav-item">
-                    <Link to="/" className="nav-link">
-                        back
-                    </Link>
-                </li>
-            </ul>
+            <Nav>
+                <Nav.Link href="/">Back</Nav.Link>
+            </Nav>
         )}
-
-        </div>
-        </nav>
-
+        </Navbar.Collapse>
+    </Navbar>
     );
 }
 
-export default Navbar;
+export default Navigation;
