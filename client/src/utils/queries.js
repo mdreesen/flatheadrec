@@ -33,3 +33,15 @@ export const QUERY_ME = gql `
     }
   }
 `;
+
+export const QUERY_PLACES = gql `
+  query {
+    places {
+      title
+      location
+      type
+      category
+      website
+    }
+  }
+`;
