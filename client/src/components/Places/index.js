@@ -18,9 +18,9 @@ const Places = () => {
                 <Card.Img variant="top" src={`./${data.website}.webp`} />
                 <Card.Body>
                     <Card.Title>{data?.title}</Card.Title>
-                    <Card.Text>{data?.type}</Card.Text>
-                    <Card.Text>{data?.location}</Card.Text>
-                    <Card.Text>{data?.category}</Card.Text>
+                    <Card.Text>{`Type: ${data?.type}`}</Card.Text>
+                    <Card.Text>{`Location: ${data?.location}`}</Card.Text>
+                    <Card.Text>{`Category: ${data?.category}`}</Card.Text>
                     <a href={`www.${data?.website}.com`}>Website</a>
                 </Card.Body>
             </Card>

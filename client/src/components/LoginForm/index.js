@@ -53,7 +53,7 @@ const LoginForm = () => {
             <div><input id="login-password-input" type="password" name="password" autoComplete="on" value={formState.value} onChange={handleChange} placeholder="Enter your password" /></div>
           </div>
         </div>
-        <button type="submit" id="loginModalBtn" className="btn btn-primary" onClick={loginFormHandler}>Login</button>
+        <button type="submit" id="loginModalBtn" className="login_button btn btn-primary" onClick={loginFormHandler}>Login</button>
       </form>
       {error && <div>Incorrect Login</div>}
     </>

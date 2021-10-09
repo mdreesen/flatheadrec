@@ -8,6 +8,10 @@
     display: flex;
 }
 
+.login_button {
+    align-self: end !important;
+}
+
 @media only screen and (max-width: 800px) {
     .login-section {
         display: grid;

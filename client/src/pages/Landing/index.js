@@ -2,6 +2,8 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import './landingpage.css';
 
+// import backgroundvideo from './video.mp4';
+
 // import components
 import LoginForm from '../../components/LoginForm';
 import SignupModal from '../../components/SignupModal';
@@ -9,8 +11,10 @@ import SignupModal from '../../components/SignupModal';
 
 function Landing() {
     return (
-        <div>
-            {/* <img src="./flatheadPic.webp"></img> */}
+        <div className="">
+            {/* <video autoPlay loop muted>
+                <source src={'./video.mp4'} type="video/mp4"/>
+            </video> */}
             <section className="landingHero">
                 <span><h1 className="title">Flathead Adventure</h1></span>
                 <p>Lets adventure around the Flathead Valley.</p>
@@ -25,8 +29,6 @@ function Landing() {
                         <SignupModal />
                     </div>
                 </div>
-            </section>
-            <section className="aboutSection">
             </section>
         </div>
     );
