@@ -41,6 +41,7 @@ type Place {
     type: String
     category: String
     website: String
+    image: String
   }
 
   type Admin {

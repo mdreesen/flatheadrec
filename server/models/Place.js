@@ -27,7 +27,7 @@ const locationSchema = new Schema(
     website: {
       type: String,
       required: true
-    },
+    }
   },
   {
     toJSON: {
