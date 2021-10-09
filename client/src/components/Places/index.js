@@ -5,38 +5,31 @@ import Button from 'react-bootstrap/Button';
 // import data
 import { useQuery } from '@apollo/react-hooks';
 import { QUERY_PLACES } from '../../utils/queries';
-import { render } from 'react-dom';
 
 const Places = () => {
 
     const { data } = useQuery(QUERY_PLACES);
-    console.log(data?.places?.map((place, i) => { return place }));
 
-    // const PlaceCard = () => {
-    //         {data?.places?.map((place, index) => {
-    //             return (
-    //                 <Card style={{ width: '18rem' }}>
-    //                 <Card.Img variant="top" src="holder.js/100px180" />
-    //                 <Card.Body>
-    //                     <Card.Title>Card Title</Card.Title>
-    //                     <Card.Text>
-    //                         Some quick example text to build on the card title and make up the bulk of
-    //                         the card's content.
-    //     </Card.Text>
-    //                     <Button variant="primary">Go somewhere</Button>
-    //                 </Card.Body>
-    //             </Card>
-    //             )
-    //         })}
-    // }
-
-
-
+    const PlaceCard = (data, index) => {
+        return (
+            <Card style={{ width: '18rem' }} key={index}>
+                <Card.Img variant="top" src="holder.js/100px180" />
+                <Card.Body>
+                    <Card.Title>{data?.title}</Card.Title>
+                    <Card.Text>{data?.type}</Card.Text>
+                    <Card.Text>{data?.location}</Card.Text>
+                    <Card.Text>{data?.category}</Card.Text>
+                    <Card.Text>{data?.website}</Card.Text>
+                    <Button variant="primary">Go somewhere</Button>
+                </Card.Body>
+            </Card>
+        )
+    }
 
     return (
         <div>
             <h2>Find a place around the Flathead Valley</h2>
-            {/* <PlaceCard/> */}
+            {data?.places?.map(PlaceCard)}
         </div>
     );
 }
