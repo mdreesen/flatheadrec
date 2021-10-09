@@ -1,6 +1,5 @@
 import React from 'react';
 import Card from 'react-bootstrap/Card';
-// import Nav from 'react-bootstrap/Nav';
 import Row from 'react-bootstrap/Row';
 import './card.css';
 
@@ -14,11 +13,9 @@ const Places = () => {
 
     const PlaceCard = (data, index) => {
 
-        const imagepath = '../../../public/';
-
         return (
             <Card style={{ width: '18rem' }} key={`place-${data.title}-${index}`}>
-                {/* <Card.Img variant="top" src={`${imagepath}/${data.image}.webp`} /> */}
+                <Card.Img variant="top" src={`./${data.website}.webp`} />
                 <Card.Body>
                     <Card.Title>{data?.title}</Card.Title>
                     <Card.Text>{data?.type}</Card.Text>
