@@ -18,10 +18,12 @@ function Navigation() {
                 {Auth.loggedIn() ? (
                     <Nav className="me-auto link_bundle">
                         <Nav.Link href="/home">Home</Nav.Link>
+                        <Nav.Link href="/all">All</Nav.Link>
                         <Nav.Link href="/coffee-shops">Coffee Shops</Nav.Link>
                         <Nav.Link href="/eatery">Eatery</Nav.Link>
                         <Nav.Link href="#">Link</Nav.Link>
                         <Nav>
+                            <Nav.Link href="/settings">Settings</Nav.Link>
                             <Nav.Link href="#" onClick={logout}>Logout</Nav.Link>
                         </Nav>
                     </Nav>

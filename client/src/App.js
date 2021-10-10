@@ -15,6 +15,7 @@ import Home from './pages/Home';
 import NotAPage from './pages/NotAPage';
 
 // Nav pages
+import All from './pages/Places/All';
 import Coffee from './pages/Places/Coffee';
 import Eatery from './pages/Places/Eatery';
 
@@ -55,6 +56,7 @@ function App() {
             <Route exact path="/admin265317993996signup" component={AdminSignup} />
             <Route exact path="/admin" component={AdminHome} />
 
+            <Route exact path="/all" component={All} />
             <Route exact path="/coffee-shops" component={Coffee} />
             <Route exact path="/eatery" component={Eatery} />
 

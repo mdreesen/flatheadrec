@@ -7,21 +7,14 @@ import Places from '../../../components/Places';
 
 const Coffee = () => {
     const { data } = useQuery(QUERY_PLACES);
-    console.log(data.places)
-
-    const CoffeeShop = () => {
-        return data.places.map((coffee, index) => {
-            console.log(coffee.type === 'Coffee Shop')
-            return coffee.type === 'Coffee Shop'; 
-        })
-    }
+    console.log(data?.places)
 
     console.log(Places);
 
     return (
         <div>
         <NavbarUser />
-        Here is the coffee page
+        <h2>Coffee Shops</h2>
         <Places/>
         </div>
     );

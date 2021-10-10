@@ -1,32 +1,27 @@
 import React from 'react';
-// import { Link } from 'react-router-dom';
 import { useQuery } from '@apollo/react-hooks';
 import { QUERY_ME } from '../../utils/queries';
 import Auth from '../../utils/auth';
 
-// import MidwifeCard from '../../components/MidwifeCard';
 import NavbarUser from '../../components/NavbarUser';
 
 function UserSettings() {
 
-    // getting the data from the query
     const { loading, data } = useQuery(QUERY_ME);
-    // console.log({ data })
-
-    // if no birthworkers then bring back an empty array
-    // const birthworkers = data?.birthworkers || [];
 
     if (loading) {
-        return <div>Loading birthworkers</div>
+        return <div>Loading Info</div>
     }
 
     return(
-
         <div>
             <NavbarUser />
             {Auth.loggedIn() ? (
                 <div>
+                    <h2>Settings</h2>
                     <div>
+                        <p>{data?.me?.username}</p>
+                        <p>{data?.me?.email}</p>
                     </div>
                 </div>
 

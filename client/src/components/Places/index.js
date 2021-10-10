@@ -29,7 +29,6 @@ const Places = () => {
 
     return (
         <div>
-            <h2>Find a place around the Flathead Valley</h2>
             {data ? (
                 <Row sm={1} md={2} lg={3}>
                     {data?.places?.map(PlaceCard)}
