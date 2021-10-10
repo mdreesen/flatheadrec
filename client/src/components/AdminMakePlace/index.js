@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import Button from 'react-bootstrap/Button';
-import Auth from '../../utils/auth';
 import { useMutation } from '@apollo/react-hooks';
 import { ADD_PLACE } from '../../utils/mutations';
 

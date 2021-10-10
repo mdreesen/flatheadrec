@@ -3,12 +3,20 @@ import './App.css';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import { ApolloProvider } from '@apollo/react-hooks';
 import ApolloClient from 'apollo-boost';
+import Auth from './utils/auth';
+
+// import components
+import Navigation from './components/NavbarUser';
 
 // Import pages
 import Landing from './pages/Landing';
 import UserSettings from './pages/UserSettings';
 import Home from './pages/Home';
 import NotAPage from './pages/NotAPage';
+
+// Nav pages
+import Coffee from './pages/Places/Coffee';
+import Eatery from './pages/Places/Eatery';
 
 // Admin Page
 import AdminLogin from './pages/AdminLogin';
@@ -46,6 +54,9 @@ function App() {
             <Route exact path="/admin-login" component={AdminLogin} />
             <Route exact path="/admin265317993996signup" component={AdminSignup} />
             <Route exact path="/admin" component={AdminHome} />
+
+            <Route exact path="/coffee-shops" component={Coffee} />
+            <Route exact path="/eatery" component={Eatery} />
 
             <Route component={NotAPage}/>
           </Switch>
