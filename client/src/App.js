@@ -6,7 +6,7 @@ import ApolloClient from 'apollo-boost';
 import Auth from './utils/auth';
 
 // import components
-import Navigation from './components/NavbarUser';
+// import Navigation from './components/NavbarUser';
 
 // Import pages
 import Landing from './pages/Landing';
@@ -16,8 +16,11 @@ import NotAPage from './pages/NotAPage';
 
 // Nav pages
 import All from './pages/Places/All';
+import Bars from './pages/Places/Bars';
 import Coffee from './pages/Places/Coffee';
 import Eatery from './pages/Places/Eatery';
+import Lodging from './pages/Places/Lodging';
+import Outdoor from './pages/Places/Outdoor';
 
 // Admin Page
 import AdminLogin from './pages/AdminLogin';
@@ -57,8 +60,11 @@ function App() {
             <Route exact path="/admin" component={AdminHome} />
 
             <Route exact path="/all" component={All} />
+            <Route exact path="/bars" component={Bars} />
             <Route exact path="/coffee-shops" component={Coffee} />
             <Route exact path="/eatery" component={Eatery} />
+            <Route exact path="/lodging" component={Lodging} />
+            <Route exact path="/outdoor" component={Outdoor} />
 
             <Route component={NotAPage}/>
           </Switch>

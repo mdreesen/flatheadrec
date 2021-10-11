@@ -13,6 +13,7 @@ const Places = () => {
 
     const PlaceCard = (data, index) => {
 
+
         return (
             <Card style={{ width: '18rem' }} key={`place-${data.title}-${index}`}>
                 <Card.Img variant="top" src={`./${data.website}.webp`} />

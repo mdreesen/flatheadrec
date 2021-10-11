@@ -19,12 +19,14 @@ function Navigation() {
                     <Nav className="me-auto link_bundle">
                         <Nav.Link href="/home">Home</Nav.Link>
                         <Nav.Link href="/all">All</Nav.Link>
+                        <Nav.Link href="/bars">Bars</Nav.Link>
                         <Nav.Link href="/coffee-shops">Coffee Shops</Nav.Link>
                         <Nav.Link href="/eatery">Eatery</Nav.Link>
-                        <Nav.Link href="#">Link</Nav.Link>
+                        <Nav.Link href="/lodging">Lodging</Nav.Link>
+                        <Nav.Link href="/outdoor">Outdoor</Nav.Link>
                         <Nav>
                             <Nav.Link href="/settings">Settings</Nav.Link>
-                            <Nav.Link href="#" onClick={logout}>Logout</Nav.Link>
+                            <Nav.Link onClick={logout}>Logout</Nav.Link>
                         </Nav>
                     </Nav>
                 ) : (

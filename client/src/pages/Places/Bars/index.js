@@ -3,16 +3,16 @@ import Card from 'react-bootstrap/Card';
 import Row from 'react-bootstrap/Row';
 import { useQuery } from '@apollo/react-hooks';
 import { QUERY_PLACES } from '../../../utils/queries';
-
 import NavbarUser from '../../../components/NavbarUser';
-import Places from '../../../components/Places';
 
-const Coffee = () => {
+const Bars = () => {
     const { data } = useQuery(QUERY_PLACES);
 
     const PlaceCard = (data, index) => {
 
-        return data?.type === 'Coffee Shop' ? (
+        const type = data?.type;
+
+        return type === 'Bar' ? (
             <Card style={{ width: '18rem' }} key={`place-${data.title}-${index}`}>
                 <Card.Img variant="top" src={`./${data.website}.webp`} />
                 <Card.Body>
@@ -31,7 +31,7 @@ const Coffee = () => {
     return (
         <div>
         <NavbarUser />
-        <h2>Coffee Shops</h2>
+        <h2>Bars</h2>
             {data ? (
                 <Row sm={1} md={2} lg={3}>
                     {data?.places?.map(PlaceCard)}
@@ -44,4 +44,4 @@ const Coffee = () => {
 }
 
 
-export default Coffee;
+export default Bars;
