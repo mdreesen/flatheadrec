@@ -5,7 +5,7 @@ import { ADD_PLACE } from '../../utils/mutations';
 
 const AdminMakePlace = () => {
 
-    const [formState, setFormState] = useState({ title: '', location: '', type: '', category: '', website: '', image: '' });
+    const [formState, setFormState] = useState({ title: '', location: '', type: '', category: '', website: '' });
     const [addPlace, { error }] = useMutation(ADD_PLACE);
 
     // submit form
@@ -46,6 +46,14 @@ const AdminMakePlace = () => {
                 <div>
                     <label id="signupTypeLabel" htmlFor="signup-type">Type (restaurant, bar, club, diner, etc...)</label>
                     <div><input value={formState.type} onChange={handleChange} id="signup-type-input" name="type" placeholder="Required" autoComplete="on" /></div>
+                    {/* <>
+                    <InputGroup className="mb-3">
+                        <InputGroup.Radio aria-label="Checkbox for following text input" value={formState.type}/>
+                    </InputGroup>
+                    <InputGroup>
+                        <InputGroup.Radio aria-label="Radio button for following text input" />
+                    </InputGroup>
+                    </> */}
                 </div>
                 <div>
                     <label id="signupCategoryLabel" htmlFor="signup-category">Category (Breakfast, Brunch, Dinner, allday?)</label>
