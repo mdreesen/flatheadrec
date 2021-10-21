@@ -6,6 +6,13 @@
             "type": "Restaurant",
             "category": "Breakfast / Brunch",
             "website": "www.pocketstonecafe.com"
+        },
+        {
+            "title": "Colter Coffee",
+            "location": "Kalispell",
+            "type": "Coffee Shop",
+            "category": "All-Day",
+            "website": "www.coltercoffee.com"
         }
     ]
 }

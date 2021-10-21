@@ -2,14 +2,14 @@ import React from 'react';
 import Card from 'react-bootstrap/Card';
 import Row from 'react-bootstrap/Row';
 import './card.css';
+import placedata from '../../utils/data/data.json'
 
 // import data
-import { useQuery } from '@apollo/react-hooks';
-import { QUERY_PLACES } from '../../utils/queries';
 
 const Places = () => {
 
-    const { data } = useQuery(QUERY_PLACES);
+    const data = placedata;
+    console.log(data)
 
     const PlaceCard = (data, index) => {
 
@@ -32,7 +32,7 @@ const Places = () => {
         <div>
             {data ? (
                 <Row sm={1} md={2} lg={3}>
-                    {data?.places?.map(PlaceCard)}
+                    {data?.place?.map(PlaceCard)}
                 </Row>
             ) : (
                     <div>No places yet</div>
